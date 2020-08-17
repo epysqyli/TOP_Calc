@@ -1,24 +1,26 @@
 let input = Array();
+let intList = Array();
+let resList = Array();
 
-function add() {
-    return a + b;
+function add(a, b) {
+    result = a + b;
+    return result;
 }
 
-function subtract() {
+function subtract(a, b) {
     return a - b;
 }
 
-function multiply() {
+function multiply(a, b) {
     return a * b;
 }
 
-function divide() {
+function divide(a, b) {
     return a / b;
 }
 
 function operate(operation, a, b) {
-    input.push(a, b);
-    return operation(input);
+    return operation(a, b);
 }
 
 const display = document.querySelector("#result");
@@ -94,16 +96,45 @@ function createNum() {
     return sinput, ninput;
 }
 
-const addition = document.getElementById('add');
-addition.addEventListener('click', () => {
-    a = ninput;
-    input = [];
-    operation = add;
-    return a;
-})
+// An interim result needs to be calculated every time an operator is called
+// The final result is displayed when the 'equal' operator is pressed
 
-const enter = document.getElementById('enter');
-enter.addEventListener('click', () => {
-    b = ninput;
-    console.log(a + b);
-})
+const addition = document.getElementById('add');
+const subtraction = document.getElementById('subtract');
+const multiplication = document.getElementById('multiply');
+const division = document.getElementById('divide');
+
+let operations = [addition, subtraction, multiplication, division];
+
+function chooser() {
+    for (let i = 0; i < operations.length; i++) {
+        operations[i].addEventListener('click', (event) => {
+            console.log(operations[i].id);
+            if (i < 1) {
+                a = ninput;
+                intList.push(a);
+            }
+            if (intList.length == 1) {
+                input = [];
+                b = ninput;
+                intList.push(b);
+            }
+            if (operations[i].id == "add") {
+                operate(add, intList[0], intList[1]);
+            }
+            /*
+            else if (operations[i].id == "subtract") {
+
+            }
+            else if (operations[i].id == "multiply") {
+
+            }
+            else if (operations[i].id == "divide") {
+                
+            }
+            */
+        })
+    }
+}
+
+chooser();
