@@ -7,20 +7,35 @@
     height: 600px;
     padding: 1%;
     border-radius: 5px;
+    background-color: #ffe3c2;
 }
 
 button {
-    font-size: 18pt;
+    font-size: 22pt;
 }
 
 .number {
     width: 32%;
     height: 75%;
+    background-color: grey;
+    color: white;
+    border-radius: 10%;
 }
 
 .nbase {
     width: 32%;
     height: 75%;
+    background-color: grey;
+    color: white;
+    border-radius: 10%;
+}
+
+#CE {
+    width: 32%;
+    height: 75%;
+    background-color: red;
+    color: white;
+    border-radius: 10%;
 }
 
 #resultbox {
@@ -81,20 +96,24 @@ button {
 }
 
 .operator {
-    margin-top: 10px;
+    margin-top: 20px;
     width: 50%;
-    height: 62%;
+    height: 50%;
     justify-self: center;
+    background-color: orange;
+    color: white;
+    border: solid 5px #e0c6ad;
+    border-radius: 10%;
 }
 
 #result {
     position: relative;
     grid-row: 1/2;
     grid-column: 1/2;
-    border: dotted 1px black;
-    border-radius: 10%;
-    width: 97%;
+    border: solid 5px #e0c6ad;
+    width: 90%;
     height: 70%;
     margin-top: 10px;
-    justify-self: right;
-}
+    justify-self: center;
+    background-color: #be9998;
+    color: white;
