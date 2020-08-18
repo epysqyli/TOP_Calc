@@ -1,6 +1,7 @@
 let input = Array();
-let intList = Array();
+let inputList = Array();
 let resList = Array();
+let opOrder = Array();
 
 function add(a, b) {
     result = a + b;
@@ -106,35 +107,30 @@ const division = document.getElementById('divide');
 
 let operations = [addition, subtraction, multiplication, division];
 
+
 function chooser() {
     for (let i = 0; i < operations.length; i++) {
         operations[i].addEventListener('click', (event) => {
             console.log(operations[i].id);
-            if (i < 1) {
-                a = ninput;
-                intList.push(a);
-            }
-            if (intList.length == 1) {
+            inputList.push(ninput);
+            if (inputList.length >= 1) {
+                ninput = 0;
+                dinput.textContent = "";
                 input = [];
-                b = ninput;
-                intList.push(b);
             }
             if (operations[i].id == "add") {
-                operate(add, intList[0], intList[1]);
+                opOrder.push("add");
             }
-            /*
             else if (operations[i].id == "subtract") {
-
+                opOrder.push("subtract");
             }
             else if (operations[i].id == "multiply") {
-
+                opOrder.push("multiply");
             }
             else if (operations[i].id == "divide") {
-                
+                opOrder.push("divide");
             }
-            */
         })
     }
 }
-
 chooser();
