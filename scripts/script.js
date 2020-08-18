@@ -1,6 +1,6 @@
 let input = Array();
 let inputList = Array();
-let resList = Array();
+let intList = Array();
 let opOrder = Array();
 
 function add(a, b) {
@@ -97,16 +97,12 @@ function createNum() {
     return sinput, ninput;
 }
 
-// An interim result needs to be calculated every time an operator is called
-// The final result is displayed when the 'equal' operator is pressed
-
 const addition = document.getElementById('add');
 const subtraction = document.getElementById('subtract');
 const multiplication = document.getElementById('multiply');
 const division = document.getElementById('divide');
 
 let operations = [addition, subtraction, multiplication, division];
-
 
 function chooser() {
     for (let i = 0; i < operations.length; i++) {
@@ -134,3 +130,37 @@ function chooser() {
     }
 }
 chooser();
+
+const equal = document.getElementById('enter');
+equal.addEventListener('click', () => {
+    calculate();
+})
+
+//allow for more operator to be concatenated without clicking equal
+
+function calculate() {
+    inputList.push(ninput);
+    dinput.textContent = "";
+    while (opOrder.length > 0) {
+        if (opOrder[0] == "add") {
+            if (intList.length == 0) {
+                stepRes = operate(add, inputList[0], inputList[1]);
+            }
+            else if (intList.length > 0) stepRes = operate(add, intList[0], inputList[1]);
+            intList.push(stepRes);
+            inputList.splice(0, 1);
+            inputList.splice(0, 1);
+            opOrder.splice(0, 1);
+            console.log(stepRes);
+        }
+        if (opOrder[0] == "subtract") {
+
+        }
+        if (opOrder[0] == "multiply") {
+
+        }
+        if (opOrder[0] == "divide") {
+
+        }
+    }
+}
