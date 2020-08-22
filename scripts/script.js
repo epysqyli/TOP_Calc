@@ -104,6 +104,8 @@ const division = document.getElementById('divide');
 
 let operations = [addition, subtraction, multiplication, division];
 
+// reexamine code starting from here
+
 function chooser() {
     for (let i = 0; i < operations.length; i++) {
         operations[i].addEventListener('click', (event) => {
@@ -136,7 +138,8 @@ equal.addEventListener('click', () => {
     calculate();
 })
 
-//allow for more operator to be concatenated without clicking equal
+// allow for more operator to be concatenated without clicking equal
+// make sure results are correct
 
 function calculate() {
     inputList.push(ninput);
@@ -144,23 +147,26 @@ function calculate() {
     while (opOrder.length > 0) {
         if (opOrder[0] == "add") {
             if (intList.length == 0) {
-                stepRes = operate(add, inputList[0], inputList[1]);
+                intRes = operate(add, inputList[0], inputList[1]);
+                while (inputList.length > 0) inputList.pop();
             }
-            else if (intList.length > 0) stepRes = operate(add, intList[0], inputList[1]);
-            intList.push(stepRes);
-            inputList.splice(0, 1);
-            inputList.splice(0, 1);
+            // error is somehow here
+            else if (intList.length > 0) {
+                intRes = operate(add, inputList[0], intList[intList.length - 1]);
+                while (inputList.length > 0) inputList.pop();
+            }
+            intList.push(intRes);
             opOrder.splice(0, 1);
-            console.log(stepRes);
+            console.log(intRes);
         }
         if (opOrder[0] == "subtract") {
-
+            
         }
         if (opOrder[0] == "multiply") {
-
+            
         }
         if (opOrder[0] == "divide") {
-
+            
         }
     }
 }
