@@ -101,46 +101,41 @@ const addition = document.getElementById('add');
 const subtraction = document.getElementById('subtract');
 const multiplication = document.getElementById('multiply');
 const division = document.getElementById('divide');
+const equal = document.getElementById('enter');
 
-let operations = [addition, subtraction, multiplication, division];
+let operations = [addition, subtraction, multiplication, division, equal];
+let opCount = 0;
 
 // reexamine code starting from here
+// each function should solve one single problem
 
-function chooser() {
-    for (let i = 0; i < operations.length; i++) {
-        operations[i].addEventListener('click', (event) => {
-            console.log(operations[i].id);
+function push() {
+    operations.forEach(function (operation) {
+        operation.addEventListener('click', () => {
+            console.log(operation.id);
+            opCount++;
             inputList.push(ninput);
             if (inputList.length >= 1) {
-                ninput = 0;
                 dinput.textContent = "";
                 input = [];
             }
-            if (operations[i].id == "add") {
-                opOrder.push("add");
-            }
-            else if (operations[i].id == "subtract") {
-                opOrder.push("subtract");
-            }
-            else if (operations[i].id == "multiply") {
-                opOrder.push("multiply");
-            }
-            else if (operations[i].id == "divide") {
-                opOrder.push("divide");
-            }
         })
-    }
+    })
 }
-chooser();
 
-const equal = document.getElementById('enter');
-equal.addEventListener('click', () => {
-    calculate();
-})
+function chooser() {
+    operations.forEach(function (operation) {
+        operation.addEventListener('click', () => {
+            if (operation.id == "add") opOrder.push("add");
+            else if (operation.id == "subtract") opOrder.push("subtract");
+            else if (operation.id == "multiply") opOrder.push("multiply");
+            else if (operation.id == "divide") opOrder.push("divide");
+            else if (operation.id == 'enter') opOrder.push("enter");
+        })
+    })
+}
 
-// allow for more operator to be concatenated without clicking equal
-// make sure results are correct
-
+/*
 function calculate() {
     inputList.push(ninput);
     dinput.textContent = "";
@@ -150,7 +145,6 @@ function calculate() {
                 intRes = operate(add, inputList[0], inputList[1]);
                 while (inputList.length > 0) inputList.pop();
             }
-            // error is somehow here
             else if (intList.length > 0) {
                 intRes = operate(add, inputList[0], intList[intList.length - 1]);
                 while (inputList.length > 0) inputList.pop();
@@ -160,13 +154,17 @@ function calculate() {
             console.log(intRes);
         }
         if (opOrder[0] == "subtract") {
-            
+
         }
         if (opOrder[0] == "multiply") {
-            
+
         }
         if (opOrder[0] == "divide") {
-            
+
         }
     }
 }
+*/
+
+chooser();
+push();
