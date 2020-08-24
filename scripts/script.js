@@ -1,6 +1,7 @@
 let input = Array();
 let inputList = Array();
 let opOrder = Array();
+let enterCount = 0;
 
 function add(a, b) {
     result = a + b;
@@ -35,54 +36,12 @@ const nSeven = document.getElementById("7");
 const nEight = document.getElementById("8");
 const nNine = document.getElementById("9");
 
-nZero.addEventListener('click', () => {
-    input.push(nZero.textContent);
+let numbers = [nZero, nOne, nTwo, nThree, nFour, nFive, nSix, nSeven, nEight, nNine];
+numbers.forEach(function (number) {
+    number.addEventListener('click', () => {
+        input.push(number.textContent);
     createNum();
-})
-
-nOne.addEventListener('click', () => {
-    input.push(nOne.textContent);
-    createNum();
-})
-
-nTwo.addEventListener('click', () => {
-    input.push(nTwo.textContent);
-    createNum();
-})
-
-nThree.addEventListener('click', () => {
-    input.push(nThree.textContent);
-    createNum();
-})
-
-nFour.addEventListener('click', () => {
-    input.push(nFour.textContent);
-    createNum();
-})
-
-nFive.addEventListener('click', () => {
-    input.push(nFive.textContent);
-    createNum();
-})
-
-nSix.addEventListener('click', () => {
-    input.push(nSix.textContent);
-    createNum();
-})
-
-nSeven.addEventListener('click', () => {
-    input.push(nSeven.textContent);
-    createNum();
-})
-
-nEight.addEventListener('click', () => {
-    input.push(nEight.textContent);
-    createNum();
-})
-
-nNine.addEventListener('click', () => {
-    input.push(nNine.textContent);
-    createNum();
+    })
 })
 
 const addition = document.getElementById('add');
@@ -108,6 +67,7 @@ function createNum() {
 operations.forEach(function (operation) {
     operation.addEventListener('click', () => {
         console.log(operation.id);
+        if (enterCount > 0) return;
         inputList.push(ninput);
         if (inputList.length >= 1) {
             dinput.textContent = "";
@@ -116,7 +76,7 @@ operations.forEach(function (operation) {
     })
 })
 
-// saves the operation order and executes the calculation
+// saves the operation order and executes the calculation by means of calculate()
 operations.forEach(function (operation) {
     operation.addEventListener('click', () => {
         if (operation.id == "add") {
@@ -149,10 +109,10 @@ operations.forEach(function (operation) {
             console.log(inputList);
             calculate();
             while (opOrder.length > 0) opOrder.pop();
+            enterCount++;
         }
     })
 })
-
 
 function calculate() {
     if ((inputList.length == 2) && (opOrder[0] == 'add')) {
@@ -193,7 +153,6 @@ function calculate() {
     }
     if ((inputList.length == 2) && (opOrder[0] == 'enter')) {
         intRes = operate(opOrder[opOrder.length - 2], inputList[0], inputList[1]);
-        //while (inputList.length > 0) inputList.pop();
         opOrder.splice(0, 1);
         inputList.push(intRes);
         dinput.textContent = String(inputList[0]);
