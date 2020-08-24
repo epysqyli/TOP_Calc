@@ -161,6 +161,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
+        dinput.textContent = String(inputList[0]);
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'subtract')) {
@@ -169,6 +170,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
+        dinput.textContent = String(inputList[0]);
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'multiply')) {
@@ -177,6 +179,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
+        dinput.textContent = String(inputList[0]);
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'divide')) {
@@ -185,6 +188,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
+        dinput.textContent = String(inputList[0]);
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'enter')) {
@@ -192,6 +196,7 @@ function calculate() {
         //while (inputList.length > 0) inputList.pop();
         opOrder.splice(0, 1);
         inputList.push(intRes);
+        dinput.textContent = String(inputList[0]);
         return intRes;
     }
 }
