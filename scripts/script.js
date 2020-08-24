@@ -67,8 +67,10 @@ function createNum() {
 //pushes input into inputList
 operations.forEach(function (operation) {
     operation.addEventListener('click', () => {
-        console.log(operation.id);
-        if (enterCount != 0) return;
+        if (enterCount == 1) {
+            opCount++;
+            return;
+        }
         inputList.push(ninput);
         if (inputList.length >= 1) {
             dinput.textContent = "";
@@ -84,6 +86,7 @@ operations.forEach(function (operation) {
             opOrder.push("add");
             console.log(opOrder);
             console.log(inputList);
+            if (opCount == 1) enterCount--; 
             calculate();
         }
         else if (operation.id == "subtract") {
@@ -111,6 +114,7 @@ operations.forEach(function (operation) {
             calculate();
             while (opOrder.length > 0) opOrder.pop();
             enterCount++;
+            if (opCount > 0) opCount--;
         }
     })
 })
