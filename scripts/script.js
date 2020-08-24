@@ -2,6 +2,7 @@ let input = Array();
 let inputList = Array();
 let opOrder = Array();
 let enterCount = 0;
+let opCount = 0;
 
 function add(a, b) {
     result = a + b;
@@ -40,7 +41,7 @@ let numbers = [nZero, nOne, nTwo, nThree, nFour, nFive, nSix, nSeven, nEight, nN
 numbers.forEach(function (number) {
     number.addEventListener('click', () => {
         input.push(number.textContent);
-    createNum();
+        createNum();
     })
 })
 
@@ -67,7 +68,7 @@ function createNum() {
 operations.forEach(function (operation) {
     operation.addEventListener('click', () => {
         console.log(operation.id);
-        if (enterCount > 0) return;
+        if (enterCount != 0) return;
         inputList.push(ninput);
         if (inputList.length >= 1) {
             dinput.textContent = "";
