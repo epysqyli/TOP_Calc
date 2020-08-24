@@ -1,0 +1,28 @@
+function calculate() {
+    inputList.push(ninput);
+    dinput.textContent = "";
+    while (opOrder.length > 0) {
+        if (opOrder[0] == "add") {
+            if (intList.length == 0) {
+                intRes = operate(add, inputList[0], inputList[1]);
+                while (inputList.length > 0) inputList.pop();
+            }
+            else if (intList.length > 0) {
+                intRes = operate(add, inputList[0], intList[intList.length - 1]);
+                while (inputList.length > 0) inputList.pop();
+            }
+            intList.push(intRes);
+            opOrder.splice(0, 1);
+            console.log(intRes);
+        }
+        if (opOrder[0] == "subtract") {
+
+        }
+        if (opOrder[0] == "multiply") {
+
+        }
+        if (opOrder[0] == "divide") {
+
+        }
+    }
+}

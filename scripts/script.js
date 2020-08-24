@@ -1,6 +1,5 @@
 let input = Array();
 let inputList = Array();
-let intList = Array();
 let opOrder = Array();
 
 function add(a, b) {
@@ -86,17 +85,6 @@ nNine.addEventListener('click', () => {
     createNum();
 })
 
-function createNum() {
-    sinput = input.join('');
-    dinput = document.createElement('div');
-    dinput.setAttribute('id', 'resultbox');
-    dinput.textContent = sinput;
-    if (display.childElementCount > 0) display.removeChild(display.lastChild);
-    display.appendChild(dinput);
-    ninput = Number(sinput);
-    return sinput, ninput;
-}
-
 const addition = document.getElementById('add');
 const subtraction = document.getElementById('subtract');
 const multiplication = document.getElementById('multiply');
@@ -104,20 +92,28 @@ const division = document.getElementById('divide');
 const equal = document.getElementById('enter');
 
 let operations = [addition, subtraction, multiplication, division, equal];
-let opCount = 0;
 
-// reexamine code starting from here
+function createNum() {
+    sinput = input.join('');
+    ninput = Number(sinput);
+    dinput = document.createElement('div');
+    dinput.setAttribute('id', 'resultbox');
+    dinput.textContent = sinput;
+    if (display.childElementCount > 0) display.removeChild(display.lastChild);
+    display.appendChild(dinput);
+    return sinput, ninput;
+}
+
 // each function should solve one single problem
 
 function push() {
     operations.forEach(function (operation) {
         operation.addEventListener('click', () => {
             console.log(operation.id);
-            opCount++;
             inputList.push(ninput);
             if (inputList.length >= 1) {
                 dinput.textContent = "";
-                input = [];
+                while (input.length > 0) input.pop();
             }
         })
     })
@@ -135,36 +131,24 @@ function chooser() {
     })
 }
 
-/*
-function calculate() {
-    inputList.push(ninput);
-    dinput.textContent = "";
-    while (opOrder.length > 0) {
-        if (opOrder[0] == "add") {
-            if (intList.length == 0) {
-                intRes = operate(add, inputList[0], inputList[1]);
-                while (inputList.length > 0) inputList.pop();
-            }
-            else if (intList.length > 0) {
-                intRes = operate(add, inputList[0], intList[intList.length - 1]);
-                while (inputList.length > 0) inputList.pop();
-            }
-            intList.push(intRes);
-            opOrder.splice(0, 1);
-            console.log(intRes);
-        }
-        if (opOrder[0] == "subtract") {
-
-        }
-        if (opOrder[0] == "multiply") {
-
-        }
-        if (opOrder[0] == "divide") {
-
-        }
+function calculate(intRes) {
+    if ((inputList.length == 2) && (opOrder[0] == 'add')) {
+        intRes = operate(add, inputList[0], inputList[1]);
+        opOrder.splice(0, 1);
+        return intRes;
+    }
+    if ((inputList.length == 2) && (opOrder[0] == 'subtract')) {
+        intRes = operate(subtract, inputList[0], inputList[1]);
+        opOrder.splice(0, 1);
+    }
+    if ((inputList.length == 2) && (opOrder[0] == 'multiply')) {
+        intRes = operate(multiply, inputList[0], inputList[1]);
+        opOrder.splice(0, 1);
+    }
+    if ((inputList.length == 2) && (opOrder[0] == 'divide')) {
+        intRes = operate(division, inputList[0], inputList[1]);
+        opOrder.splice(0, 1);
     }
 }
-*/
-
 chooser();
 push();
