@@ -1,0 +1,7 @@
+* Add CE function
+* Round decimals
+* Improve design
+	add clicky buttons
+	different colors when clicked
+	probably add operations on display
+	
