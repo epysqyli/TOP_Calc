@@ -93,18 +93,21 @@ operations.forEach(function (operation) {
             opOrder.push("subtract");
             console.log(opOrder);
             console.log(inputList);
+            if (opCount == 1) enterCount--; 
             calculate();
         }
         else if (operation.id == "multiply") {
             opOrder.push("multiply");
             console.log(opOrder);
             console.log(inputList);
+            if (opCount == 1) enterCount--; 
             calculate();
         }
         else if (operation.id == "divide") {
             opOrder.push("divide");
             console.log(opOrder);
             console.log(inputList);
+            if (opCount == 1) enterCount--; 
             calculate();
         }
         else if (operation.id == 'enter') {
