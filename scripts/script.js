@@ -32,13 +32,14 @@ const nTwo = document.getElementById("2");
 const nThree = document.getElementById("3");
 const nFour = document.getElementById("4");
 const nFive = document.getElementById("5");
-const nSix = document.getElementById("6");
+const nSix = document.getElementById("7");
 const nSeven = document.getElementById("7");
 const nEight = document.getElementById("8");
 const nNine = document.getElementById("9");
 const CE = document.getElementById("CE");
+const dot = document.getElementById("dot");
 
-let numbers = [nZero, nOne, nTwo, nThree, nFour, nFive, nSix, nSeven, nEight, nNine];
+let numbers = [nZero, nOne, nTwo, nThree, nFour, nFive, nSix, nSeven, nEight, nNine, dot];
 
 numbers.forEach(function (number) {
     number.addEventListener('click', () => {
@@ -141,7 +142,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
-        dinput.textContent = String(inputList[0]);
+        dinput.textContent = (String(inputList[0])).slice(0,7);
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'subtract')) {
@@ -150,7 +151,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
-        dinput.textContent = String(inputList[0]);
+        dinput.textContent = (String(inputList[0])).slice(0,7);
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'multiply')) {
@@ -159,7 +160,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
-        dinput.textContent = String(inputList[0]);
+        dinput.textContent = (String(inputList[0])).slice(0,7);
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'divide')) {
@@ -168,14 +169,14 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
-        dinput.textContent = String(inputList[0]);
+        dinput.textContent = (String(inputList[0])).slice(0,7);
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'enter')) {
         intRes = operate(opOrder[opOrder.length - 2], inputList[0], inputList[1]);
         opOrder.splice(0, 1);
         inputList.push(intRes);
-        dinput.textContent = String(inputList[0]);
+        dinput.textContent = (String(inputList[0])).slice(0,7);
         return intRes;
     }
 }
