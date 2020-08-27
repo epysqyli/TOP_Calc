@@ -142,7 +142,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
-        dinput.textContent = (String(inputList[0])).slice(0,7);
+        dinput.textContent = String(inputList[0].toFixed(2));
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'subtract')) {
@@ -151,7 +151,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
-        dinput.textContent = (String(inputList[0])).slice(0,7);
+        dinput.textContent = String(inputList[0].toFixed(2));
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'multiply')) {
@@ -160,7 +160,7 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
-        dinput.textContent = (String(inputList[0])).slice(0,7);
+        dinput.textContent = String(inputList[0].toFixed(2));
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'divide')) {
@@ -169,14 +169,14 @@ function calculate() {
         inputList.push(intRes);
         opOrder.splice(0, 1);
         console.log(intRes);
-        dinput.textContent = (String(inputList[0])).slice(0,7);
+        dinput.textContent = String(inputList[0].toFixed(2));
         return intRes;
     }
     if ((inputList.length == 2) && (opOrder[0] == 'enter')) {
         intRes = operate(opOrder[opOrder.length - 2], inputList[0], inputList[1]);
         opOrder.splice(0, 1);
         inputList.push(intRes);
-        dinput.textContent = (String(inputList[0])).slice(0,7);
+        dinput.textContent = String(inputList[0].toFixed(2));
         return intRes;
     }
 }
