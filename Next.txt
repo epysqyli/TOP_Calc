@@ -1,5 +1,0 @@
-* Add CE function -> when pressed, it should be like reloading the page
-* Round decimals to 4 digits after the comma
-* Improve design
-	add clicky buttons
-	different colors when clicked

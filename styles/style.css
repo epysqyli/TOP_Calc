@@ -22,6 +22,10 @@ button {
     border-radius: 10%;
 }
 
+.number:hover {
+    border: solid 5px white;
+}
+
 .nbase {
     width: 32%;
     height: 75%;
@@ -30,12 +34,22 @@ button {
     border-radius: 10%;
 }
 
+.nbase:hover {
+    border: solid 5px white;
+}
+
 #CE {
     width: 32%;
     height: 75%;
     background-color: red;
     color: white;
     border-radius: 10%;
+}
+
+#CE:hover {
+    color: red;
+    background-color: white;
+    border-color: red;
 }
 
 #resultbox {
@@ -104,6 +118,11 @@ button {
     color: white;
     border: solid 5px #e0c6ad;
     border-radius: 10%;
+}
+
+.operator:hover {
+    border-color: orange;
+    background-color: #e0c6ad;
 }
 
 #result {
