@@ -36,13 +36,23 @@ const nSix = document.getElementById("6");
 const nSeven = document.getElementById("7");
 const nEight = document.getElementById("8");
 const nNine = document.getElementById("9");
+const CE = document.getElementById("CE");
 
 let numbers = [nZero, nOne, nTwo, nThree, nFour, nFive, nSix, nSeven, nEight, nNine];
+
 numbers.forEach(function (number) {
     number.addEventListener('click', () => {
         input.push(number.textContent);
         createNum();
     })
+})
+
+CE.addEventListener('click', () => {
+    if (display.childElementCount > 0) display.removeChild(display.lastChild);
+    while (input.length > 0) input.pop();
+    while (inputList.length > 0) inputList.pop();
+    while (opOrder.length > 0) opOrder.pop();
+    enterCount = 0;
 })
 
 const addition = document.getElementById('add');
@@ -68,7 +78,7 @@ function createNum() {
 operations.forEach(function (operation) {
     operation.addEventListener('click', () => {
         if (enterCount == 1) {
-            opCount++;
+            opCount = 1;
             return;
         }
         inputList.push(ninput);
@@ -82,42 +92,44 @@ operations.forEach(function (operation) {
 // saves the operation order and executes the calculation by means of calculate()
 operations.forEach(function (operation) {
     operation.addEventListener('click', () => {
+        if (inputList.length == 0) return;
         if (operation.id == "add") {
             opOrder.push("add");
             console.log(opOrder);
             console.log(inputList);
-            if (opCount == 1) enterCount--; 
+            if (opCount == 1) enterCount--;
             calculate();
         }
         else if (operation.id == "subtract") {
             opOrder.push("subtract");
             console.log(opOrder);
             console.log(inputList);
-            if (opCount == 1) enterCount--; 
+            if (opCount == 1) enterCount--;
             calculate();
         }
         else if (operation.id == "multiply") {
             opOrder.push("multiply");
             console.log(opOrder);
             console.log(inputList);
-            if (opCount == 1) enterCount--; 
+            if (opCount == 1) enterCount--;
             calculate();
         }
         else if (operation.id == "divide") {
             opOrder.push("divide");
             console.log(opOrder);
             console.log(inputList);
-            if (opCount == 1) enterCount--; 
+            if (opCount == 1) enterCount--;
             calculate();
         }
         else if (operation.id == 'enter') {
+            if (enterCount >= 1) return;
             opOrder.push("enter");
             console.log(opOrder);
             console.log(inputList);
             calculate();
             while (opOrder.length > 0) opOrder.pop();
             enterCount++;
-            if (opCount > 0) opCount--;
+            if (opCount == 1) opCount--;
         }
     })
 })
